@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Search } from "./components/Search";
+import { ChakraProvider } from "@chakra-ui/react";
+import useAxios from "./hooks/useAxios";
+import { FutureWeather } from "./components/FutureWeather";
+import { City } from "./models/City";
 
 function App() {
+  const [selectedCity, setSelectedCity] = useState<City | null>(null);
+
+  const onSelectedCity = (selectedCity: City) => {
+    setSelectedCity(selectedCity);
+  };
+
+  useAxios();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <Search onSelectedCity={onSelectedCity} />
+      <FutureWeather selectedCity={selectedCity} />
+    </ChakraProvider>
   );
 }
 
