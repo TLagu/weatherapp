@@ -2,9 +2,8 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel, Box } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { WeatherApi } from "../api/WeatherApi";
 import { City } from "../models/City";
-import { ForecastDto } from "../models/ForecastDto";
+import { ForecastDto } from "../models/forecast/ForecastDto";
 import { differenceInCalendarDays, addDays, format, isSameDay } from "date-fns";
-import { mapForecastDtoToView } from "../helpers/ForecastMapper";
 import { BarChart } from "./BarChart";
 
 interface FutureWeatherProps {

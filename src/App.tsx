@@ -4,6 +4,7 @@ import { Search } from "./components/Search";
 import { ChakraProvider } from "@chakra-ui/react";
 import useAxios from "./hooks/useAxios";
 import { FutureWeather } from "./components/FutureWeather";
+import { CurrentWeather } from "./components/CurrentWeather";
 import { City } from "./models/City";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   return (
     <ChakraProvider>
       <Search onSelectedCity={onSelectedCity} />
+      <CurrentWeather selectedCity={selectedCity} />
       <FutureWeather selectedCity={selectedCity} />
     </ChakraProvider>
   );

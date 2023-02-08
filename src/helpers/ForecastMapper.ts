@@ -1,5 +1,5 @@
 import { ForecastView } from "../models/ForecastView";
-import { MeasurementDto } from "../models/MeasurementDto";
+import { MeasurementDto } from "../models/forecast/MeasurementDto";
 
 export const mapForecastDtoToView = (
   dto: MeasurementDto

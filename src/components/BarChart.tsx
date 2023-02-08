@@ -1,6 +1,5 @@
 import Chart from "react-apexcharts";
-import { ForecastView } from "../models/ForecastView";
-import { MeasurementDto } from "../models/MeasurementDto";
+import { MeasurementDto } from "../models/forecast/MeasurementDto";
 
 interface BarChartProps {
   view: MeasurementDto[];
