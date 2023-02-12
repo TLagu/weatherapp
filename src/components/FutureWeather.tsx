@@ -1,10 +1,11 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel, Box } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { WeatherApi } from "../api/WeatherApi";
-import { City } from "../models/City";
-import { ForecastDto } from "../models/forecast/ForecastDto";
+import { WeatherApi } from "api/WeatherApi";
+import { City } from "models/City";
+import { ForecastDto } from "models/forecast/ForecastDto";
 import { differenceInCalendarDays, addDays, format, isSameDay } from "date-fns";
 import { BarChart } from "./BarChart";
+import { DataType } from "models/DataType";
 
 interface FutureWeatherProps {
   selectedCity: City | null;
@@ -68,12 +69,9 @@ export const FutureWeather = (props: FutureWeatherProps) => {
               {day.data.length > 0 ? (
                 <div>
                   <Box display="flex" flexFlow="row wrap">
-                    <BarChart view={day.data} type="temperature" />
-                    <BarChart view={day.data} type="pressure" />
-                    <BarChart view={day.data} type="cloudsLevel" />
-                    <BarChart view={day.data} type="humidity" />
-                    <BarChart view={day.data} type="windSpeed" />
-                    <BarChart view={day.data} type="feelsLike" />
+                    {Object.values(DataType).map((value) => (
+                      <BarChart view={day.data} type={value} />
+                    ))}
                   </Box>
                 </div>
               ) : (

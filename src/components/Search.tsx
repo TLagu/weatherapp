@@ -9,10 +9,10 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { debounce } from "lodash";
-import { GeoApi } from "../api/GeoApi";
-import { City } from "../models/City";
-import { RegionType } from "../models/RegionType";
-import { minCharsToTriggerSearch } from "../constants/constants";
+import { GeoApi } from "api/GeoApi";
+import { City } from "models/City";
+import { RegionType } from "models/RegionType";
+import { minCharsToTriggerSearch } from "constants/constants";
 
 interface SearchProps {
   onSelectedCity: (city: City) => void;

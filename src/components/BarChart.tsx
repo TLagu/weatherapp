@@ -1,50 +1,51 @@
 import Chart from "react-apexcharts";
+import { DataType } from "../models/DataType";
 import { MeasurementDto } from "../models/forecast/MeasurementDto";
 
 interface BarChartProps {
   view: MeasurementDto[];
-  type: string;
+  type: DataType;
 }
 
 export const BarChart = (props: BarChartProps) => {
   let title: string = "Default title";
   let name: string = "Default name";
-  let data = props.view.map((x) => 0);
-  let categories = props.view.map((x) =>
+  let data = props.view.map((_) => 0);
+  const categories = props.view.map((x) =>
     new Date(x.dt * 1000).getHours().toString()
   );
   switch (props.type) {
-    case "temperature": {
+    case DataType.Temperature: {
       title = "Temperature [°C]";
       name = "Temperature";
       data = props.view.map((x) => x.main.temp);
       break;
     }
-    case "pressure": {
+    case DataType.Pressure: {
       title = "Pressure [hPa]";
       name = "Pressure";
       data = props.view.map((x) => x.main.pressure);
       break;
     }
-    case "cloudsLevel": {
+    case DataType.CloudsLevel: {
       title = "Clouds level [%]";
       name = "Clouds level";
       data = props.view.map((x) => x.clouds.all);
       break;
     }
-    case "humidity": {
+    case DataType.Humidity: {
       title = "Humidity [%]";
       name = "Humidity";
       data = props.view.map((x) => x.main.humidity);
       break;
     }
-    case "windSpeed": {
+    case DataType.WindSpeed: {
       title = "Wind speed [m/s]";
       name = "Wind speed";
       data = props.view.map((x) => x.wind.speed);
       break;
     }
-    case "feelsLike": {
+    case DataType.FeelsLike: {
       title = "Feels like [°C]";
       name = "Feels like";
       data = props.view.map((x) => x.main.feels_like);
